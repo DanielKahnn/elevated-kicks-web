@@ -1,0 +1,299 @@
+/* ============================================================
+   ELEVATED KICKS — Design System
+   Ported from Shopify theme ek-3d.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ── Design Tokens ─────────────────────────────────────────── */
+:root {
+  --ek-bg:            #050506;
+  --ek-bg-2:          #0c0c0f;
+  --ek-bg-3:          #131317;
+  --ek-surface:       rgba(255,255,255,0.04);
+  --ek-glass:         rgba(8,8,10,0.72);
+  --ek-glass-border:  rgba(255,255,255,0.09);
+  --ek-blur:          blur(28px) saturate(200%);
+  --ek-blur-sm:       blur(12px) saturate(160%);
+
+  --ek-red:           #FF2D1F;
+  --ek-orange:        #FF7B28;
+  --ek-glow-red:      rgba(255,45,31,0.35);
+  --ek-gradient:      linear-gradient(135deg,#FF2D1F 0%,#FF7B28 100%);
+
+  --ek-text:          #ffffff;
+  --ek-text-2:        rgba(255,255,255,0.82);
+  --ek-text-3:        rgba(255,255,255,0.52);
+
+  --ek-border:        rgba(255,255,255,0.07);
+  --ek-border-accent: rgba(255,45,31,0.35);
+
+  --ek-ease:          cubic-bezier(0.23,1,0.32,1);
+  --ek-t:             0.45s var(--ek-ease);
+  --ek-t-fast:        0.22s var(--ek-ease);
+}
+
+/* ── Reset / Base ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--ek-bg);
+  color: var(--ek-text);
+  font-family: 'Work Sans', system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img, video { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar               { width: 6px; }
+::-webkit-scrollbar-track         { background: var(--ek-bg-2); }
+::-webkit-scrollbar-thumb         { background: rgba(255,45,31,0.5); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover   { background: var(--ek-red); }
+
+/* ── Progress Bar ───────────────────────────────────────────── */
+.ek-progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--ek-gradient);
+  z-index: 10000;
+  box-shadow: 0 0 12px var(--ek-glow-red);
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+/* ── Orb Layer ──────────────────────────────────────────────── */
+.ek-orb-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.ek-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+.ek-orb-1 {
+  width: 700px; height: 700px;
+  top: -15%; right: -10%;
+  background: radial-gradient(circle at center, rgba(255,45,31,0.13) 0%, transparent 65%);
+  filter: blur(60px);
+  animation: ek-drift-1 14s ease-in-out infinite;
+}
+.ek-orb-2 {
+  width: 550px; height: 550px;
+  bottom: 10%; left: -8%;
+  background: radial-gradient(circle at center, rgba(255,123,40,0.10) 0%, transparent 65%);
+  filter: blur(70px);
+  animation: ek-drift-2 18s ease-in-out infinite;
+}
+.ek-orb-3 {
+  width: 400px; height: 400px;
+  top: 45%; left: 40%;
+  background: radial-gradient(circle at center, rgba(140,50,255,0.06) 0%, transparent 65%);
+  filter: blur(80px);
+  animation: ek-drift-3 22s ease-in-out infinite;
+}
+@keyframes ek-drift-1 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%      { transform: translate(-40px,30px) scale(1.08); }
+  66%      { transform: translate(30px,-20px) scale(0.94); }
+}
+@keyframes ek-drift-2 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  40%     { transform: translate(50px,-40px) scale(1.06); }
+  70%     { transform: translate(-30px,20px) scale(0.96); }
+}
+@keyframes ek-drift-3 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50%     { transform: translate(0,0) scale(1.15); }
+}
+
+/* ── Typography ─────────────────────────────────────────────── */
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--ek-text);
+}
+p { color: var(--ek-text-2); }
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  background: var(--ek-gradient);
+  color: #fff;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--ek-t-fast), box-shadow var(--ek-t-fast);
+  box-shadow: 0 4px 20px var(--ek-glow-red);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 35px var(--ek-glow-red);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2rem;
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  border: 1px solid var(--ek-glass-border);
+  cursor: pointer;
+  transition: all var(--ek-t-fast);
+  backdrop-filter: blur(8px);
+}
+.btn-secondary:hover {
+  border-color: var(--ek-border-accent);
+  background: rgba(255,45,31,0.08);
+  transform: translateY(-2px);
+}
+
+/* ── Layout ─────────────────────────────────────────────────── */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+@media (max-width: 768px) {
+  .container { padding: 0 1rem; }
+}
+
+main { position: relative; z-index: 1; }
+
+/* ── Glass Card ─────────────────────────────────────────────── */
+.glass-card {
+  background: rgba(15,15,18,0.85);
+  border: 1px solid var(--ek-border);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color var(--ek-t), box-shadow var(--ek-t), transform var(--ek-t);
+}
+.glass-card:hover {
+  border-color: var(--ek-border-accent);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(255,45,31,0.06);
+}
+
+/* ── Section titles ─────────────────────────────────────────── */
+.section-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  letter-spacing: 0.04em;
+  color: var(--ek-text);
+}
+.section-sub {
+  color: var(--ek-text-3);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--ek-border) 30%, var(--ek-border-accent) 50%, var(--ek-border) 70%, transparent 100%);
+  margin: 0.75rem 0 2.5rem;
+}
+
+/* ── Reveal animations ──────────────────────────────────────── */
+.ek-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ek-ease), transform 0.7s var(--ek-ease);
+}
+.ek-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.ek-reveal-scale {
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 0.7s var(--ek-ease), transform 0.7s var(--ek-ease);
+}
+.ek-reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Shimmer skeleton ───────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.07) 50%, rgba(255,255,255,0.03) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
+  border-radius: 8px;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Form inputs ─────────────────────────────────────────────── */
+input, select, textarea {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--ek-glass-border);
+  color: var(--ek-text);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.95rem;
+  width: 100%;
+  transition: border-color var(--ek-t-fast), box-shadow var(--ek-t-fast);
+  outline: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: rgba(255,45,31,0.5);
+  box-shadow: 0 0 0 3px rgba(255,45,31,0.12);
+}
+
+/* ── Page fade-in ───────────────────────────────────────────── */
+@keyframes pageFade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter {
+  animation: pageFade 0.5s var(--ek-ease) both;
+}
+
+/* ── Mobile ─────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .ek-orb-1 { width: 350px; height: 350px; }
+  .ek-orb-2 { width: 280px; height: 280px; }
+  .ek-orb-3 { display: none; }
+}
