@@ -92,12 +92,12 @@ export const PRODUCT_IMAGES: Record<string, string[]> = {
     'https://cdn.sanity.io/images/pu5wtzfc/production/7255e17f15573023fc7a6404c29d48531bd63c45-2000x2000.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/80b832c40581f987109812c15f9f4e3e2be3951f-2000x2000.jpg',
   ],
-  // ── Nike Victory Tour 4 Golf (side-profile cover) ─────────────────────────
+  // ── Nike Victory Tour 4 Golf JT collab (all correct cream/coral colorway) ──
   'nike-victory-tour-4-golf': [
     'https://sneakernews.com/wp-content/uploads/2025/04/justin-timberlake-nike-golf-victory-tour-4-hm5802-100-11.jpg',
-    'https://cdn.sanity.io/images/pu5wtzfc/production/0333663273286341b3c923e1ce601e751fdfa75d-2000x2000.jpg',
-    'https://cdn.sanity.io/images/pu5wtzfc/production/48f297689ec4176e301b4d802dc28a99dd16ec7c-2000x2000.jpg',
-    'https://cdn.sanity.io/images/pu5wtzfc/production/24e7693454e71a9dc5b3516cd29279707c0983be-2000x2000.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/04/justin-timberlake-nike-golf-victory-tour-4-hm5802-100-1.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/04/justin-timberlake-nike-golf-victory-tour-4-hm5802-100-2.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/04/justin-timberlake-nike-golf-victory-tour-4-hm5802-100-5.jpg',
     'https://sneakernews.com/wp-content/uploads/2025/04/justin-timberlake-nike-golf-victory-tour-4-hm5802-100-13.jpg',
   ],
   // ── Jordan 11 Legend Blue ─────────────────────────────────────────────────
