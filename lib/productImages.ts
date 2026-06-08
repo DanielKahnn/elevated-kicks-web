@@ -12,13 +12,13 @@ export const PRODUCT_IMAGES: Record<string, string[]> = {
     'https://images.stockx.com/360/Air-Jordan-1-Retro-High-OG-Black-Toe-Reimagined/Images/Air-Jordan-1-Retro-High-OG-Black-Toe-Reimagined/Lv2/img09.jpg',
     'https://images.stockx.com/360/Air-Jordan-1-Retro-High-OG-Black-Toe-Reimagined/Images/Air-Jordan-1-Retro-High-OG-Black-Toe-Reimagined/Lv2/img12.jpg',
   ],
-  // ── Jordan 5 Reimagined Black Metallic ───────────────────────────────────
+  // ── Jordan 5 Reimagined Black Metallic (all gray bg official Nike shots) ──
   'jordan-5-reimagined-black-metallic': [
-    'https://cdn.sanity.io/images/pu5wtzfc/production/1d4884fe235f647ab1cf70b2731cb3e30f2e690f-2000x1333.jpg',
-    'https://cdn.sanity.io/images/pu5wtzfc/production/511e152999031edaf0069b7959b08aae6106ee86-1440x1800.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/8fa0ae32d23766ba47bf41e4e35d66cb8f06ff30-2000x1250.png',
     'https://cdn.sanity.io/images/pu5wtzfc/production/cda9457f5b9e304b2d26b67f165a3f44b096b455-2000x1250.png',
-    'https://cdn.sanity.io/images/pu5wtzfc/production/1d4884fe235f647ab1cf70b2731cb3e30f2e690f-2000x1333.jpg',
+    'https://cdn.sanity.io/images/pu5wtzfc/production/8fa0ae32d23766ba47bf41e4e35d66cb8f06ff30-2000x1250.png',
+    'https://cdn.sanity.io/images/pu5wtzfc/production/cda9457f5b9e304b2d26b67f165a3f44b096b455-2000x1250.png',
+    'https://cdn.sanity.io/images/pu5wtzfc/production/8fa0ae32d23766ba47bf41e4e35d66cb8f06ff30-2000x1250.png',
   ],
   // ── Jordan 3 Retro Black Cat (consistent studio background, Oct 2024) ─────
   'jordan-3-retro-black-cat': [
