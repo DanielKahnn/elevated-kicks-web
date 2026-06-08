@@ -3,6 +3,7 @@ import './globals.css'
 import Header from '@/components/Header'
 import OrbLayer from '@/components/OrbLayer'
 import { CartProvider } from '@/context/CartContext'
+import { CustomerProvider } from '@/context/CustomerContext'
 
 export const metadata: Metadata = {
   title: { default: 'Elevated Kicks — Houston\'s Premier Sneaker Store', template: '%s | Elevated Kicks' },
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
+        <CustomerProvider>
         <CartProvider>
           <div className="ek-progress-bar" id="ek-progress" aria-hidden="true" />
           <OrbLayer />
@@ -44,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </footer>
           <ProgressScript />
         </CartProvider>
+        </CustomerProvider>
       </body>
     </html>
   )

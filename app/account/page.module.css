@@ -1,0 +1,305 @@
+.page {
+  padding: 4rem 0 6rem;
+  min-height: calc(100vh - 68px);
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Auth (logged out) ── */
+.authWrap {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.tabs {
+  display: flex;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 1.5rem;
+  gap: 4px;
+}
+
+.tabBtn {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tabActive {
+  background: linear-gradient(135deg, #FF2D1F, #FF7B28);
+  color: #fff;
+}
+
+.formCard {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: left;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+
+.input {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: #fff;
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+
+.input::placeholder { color: rgba(255,255,255,0.25); }
+.input:focus {
+  outline: none;
+  border-color: #FF7B28;
+}
+
+.error {
+  background: rgba(255,45,31,0.15);
+  border: 1px solid rgba(255,45,31,0.3);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: #FF7B28;
+}
+
+.successMsg {
+  background: rgba(34,197,94,0.12);
+  border: 1px solid rgba(34,197,94,0.25);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: #4ade80;
+}
+
+.switchHint {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+.switchLink {
+  background: none;
+  border: none;
+  color: #FF7B28;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-decoration: underline;
+  padding: 0;
+}
+
+/* ── Dashboard (logged in) ── */
+.dashHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.logoutBtn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logoutBtn:hover {
+  border-color: #FF2D1F;
+  color: #FF2D1F;
+}
+
+.section { margin-bottom: 3rem; }
+
+.sectionTitle {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 1.5rem;
+}
+
+.emptyOrders {
+  text-align: center;
+  padding: 3rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  color: rgba(255,255,255,0.4);
+}
+
+.orderList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.orderCard {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  transition: border-color 0.2s ease;
+}
+
+.orderCard:hover { border-color: rgba(255,123,40,0.3); }
+
+.orderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.orderNum {
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.orderDate {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+}
+
+.orderMeta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+}
+
+.badgeFulfilled {
+  background: rgba(34,197,94,0.15);
+  color: #4ade80;
+}
+
+.badgePending {
+  background: rgba(251,191,36,0.15);
+  color: #fbbf24;
+}
+
+.orderTotal {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #FF7B28;
+}
+
+.orderItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.orderItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  flex: 1;
+  min-width: 200px;
+}
+
+.itemImg {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.itemTitle {
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.itemQty {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+}
+
+@media (max-width: 640px) {
+  .row { grid-template-columns: 1fr; }
+  .formCard { padding: 1.25rem; }
+  .dashHeader { flex-direction: column; align-items: flex-start; }
+  .orderHeader { flex-direction: column; }
+}

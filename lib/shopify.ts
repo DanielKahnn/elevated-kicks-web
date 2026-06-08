@@ -235,6 +235,119 @@ export async function getCart(cartId: string): Promise<ShopifyCart | null> {
   return data.cart
 }
 
+// ── Customer types ────────────────────────────────────────────
+export interface ShopifyCustomerOrder {
+  id: string
+  orderNumber: number
+  totalPrice: ShopifyMoney
+  processedAt: string
+  fulfillmentStatus: string
+  financialStatus: string
+  lineItems: {
+    edges: {
+      node: {
+        title: string
+        quantity: number
+        variant: {
+          price: ShopifyMoney
+          image: ShopifyImage | null
+        } | null
+      }
+    }[]
+  }
+}
+
+export interface ShopifyCustomer {
+  id: string
+  firstName: string | null
+  lastName: string | null
+  email: string
+  phone: string | null
+  orders: { edges: { node: ShopifyCustomerOrder }[] }
+}
+
+// ── Customer mutations ────────────────────────────────────────
+export async function customerLogin(email: string, password: string): Promise<{ accessToken: string | null; errors: string[] }> {
+  const query = `
+    mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
+      customerAccessTokenCreate(input: $input) {
+        customerAccessToken { accessToken expiresAt }
+        customerUserErrors { code field message }
+      }
+    }
+  `
+  const data = await shopifyFetch<{
+    customerAccessTokenCreate: {
+      customerAccessToken: { accessToken: string; expiresAt: string } | null
+      customerUserErrors: { code: string; field: string[]; message: string }[]
+    }
+  }>(query, { input: { email, password } })
+  const { customerAccessToken, customerUserErrors } = data.customerAccessTokenCreate
+  return {
+    accessToken: customerAccessToken?.accessToken ?? null,
+    errors: customerUserErrors.map(e => e.message),
+  }
+}
+
+export async function customerCreate(
+  email: string, password: string, firstName: string, lastName: string
+): Promise<{ errors: string[] }> {
+  const query = `
+    mutation customerCreate($input: CustomerCreateInput!) {
+      customerCreate(input: $input) {
+        customer { id }
+        customerUserErrors { code field message }
+      }
+    }
+  `
+  const data = await shopifyFetch<{
+    customerCreate: {
+      customer: { id: string } | null
+      customerUserErrors: { code: string; field: string[]; message: string }[]
+    }
+  }>(query, { input: { email, password, firstName, lastName } })
+  return { errors: data.customerCreate.customerUserErrors.map(e => e.message) }
+}
+
+export async function customerLogout(accessToken: string): Promise<void> {
+  const query = `
+    mutation customerAccessTokenDelete($customerAccessToken: String!) {
+      customerAccessTokenDelete(customerAccessToken: $customerAccessToken) {
+        deletedAccessToken
+        userErrors { field message }
+      }
+    }
+  `
+  await shopifyFetch(query, { customerAccessToken: accessToken })
+}
+
+export async function getCustomer(accessToken: string): Promise<ShopifyCustomer | null> {
+  const query = `
+    query Customer($customerAccessToken: String!) {
+      customer(customerAccessToken: $customerAccessToken) {
+        id firstName lastName email phone
+        orders(first: 20, sortKey: PROCESSED_AT, reverse: true) {
+          edges { node {
+            id orderNumber financialStatus fulfillmentStatus processedAt
+            totalPrice { amount currencyCode }
+            lineItems(first: 5) {
+              edges { node {
+                title quantity
+                variant {
+                  price { amount currencyCode }
+                  image { url altText }
+                }
+              } }
+            }
+          } }
+        }
+      }
+    }
+  `
+  const data = await shopifyFetch<{ customer: ShopifyCustomer | null }>(query, { customerAccessToken: accessToken })
+  return data.customer
+}
+
 // ── Helpers ───────────────────────────────────────────────────
 export function formatPrice(money: ShopifyMoney): string {
   return new Intl.NumberFormat('en-US', {

@@ -3,11 +3,13 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import styles from './Header.module.css'
 import { useCart } from '@/context/CartContext'
+import { useCustomer } from '@/context/CustomerContext'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const { totalItems } = useCart()
+  const { customer } = useCustomer()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -29,10 +31,24 @@ export default function Header() {
           <Link href="/collections" className={styles.navLink}>Collections</Link>
           <Link href="/collections/sneakers" className={styles.navLink}>Sneakers</Link>
           <Link href="/collections/apparel" className={styles.navLink}>Apparel</Link>
+          <Link href="/contact" className={styles.navLink}>Contact Us</Link>
         </nav>
 
         {/* Actions */}
         <div className={styles.actions}>
+          {/* Account */}
+          <Link href="/account" className={styles.iconBtn} aria-label="Account" title={customer ? `Signed in as ${customer.firstName || customer.email}` : 'Sign in'} style={{ position: 'relative' }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+            {customer && (
+              <span style={{
+                position: 'absolute', top: '-4px', right: '-4px',
+                background: 'linear-gradient(135deg,#FF2D1F,#FF7B28)',
+                width: '8px', height: '8px', borderRadius: '50%',
+              }} />
+            )}
+          </Link>
           <Link href="/search" className={styles.iconBtn} aria-label="Search">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -70,6 +86,10 @@ export default function Header() {
           <Link href="/collections" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Collections</Link>
           <Link href="/collections/sneakers" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Sneakers</Link>
           <Link href="/collections/apparel" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Apparel</Link>
+          <Link href="/contact" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Contact Us</Link>
+          <Link href="/account" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
+            {customer ? `My Account (${customer.firstName || customer.email})` : 'Sign In / Account'}
+          </Link>
           <Link href="/search" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Search</Link>
         </nav>
       )}
