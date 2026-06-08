@@ -24,10 +24,9 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className={styles.nav}>
+          <Link href="/collections" className={styles.navLink}>Collections</Link>
           <Link href="/collections/sneakers" className={styles.navLink}>Sneakers</Link>
           <Link href="/collections/apparel" className={styles.navLink}>Apparel</Link>
-          <Link href="/collections/new-arrivals" className={styles.navLink}>New Arrivals</Link>
-          <Link href="/collections/sale" className={styles.navLink}>Sale</Link>
         </nav>
 
         {/* Actions */}
@@ -54,10 +53,10 @@ export default function Header() {
       {/* Mobile menu */}
       {menuOpen && (
         <nav className={styles.mobileMenu}>
+          <Link href="/collections" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Collections</Link>
           <Link href="/collections/sneakers" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Sneakers</Link>
           <Link href="/collections/apparel" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Apparel</Link>
-          <Link href="/collections/new-arrivals" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>New Arrivals</Link>
-          <Link href="/collections/sale" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Sale</Link>
+          <Link href="/search" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Search</Link>
         </nav>
       )}
     </header>
