@@ -116,13 +116,13 @@ export const PRODUCT_IMAGES: Record<string, string[]> = {
     'https://cdn.sanity.io/images/pu5wtzfc/production/ac9cfa4a4eb44508b3aba9807ebed6e1ce3bbdc5-2000x2000.png',
     'https://cdn.sanity.io/images/pu5wtzfc/production/8466c06cb5bbe62476cf5654ee9b2631e4db5573-1818x2000.png',
   ],
-  // ── Jordan 1 Retro High OG 'UNC' Reimagined (DZ5485-402, clean studio) ────
+  // ── Jordan 1 Retro High OG 'UNC' Reimagined (DZ5485-402, StockX 360 studio) ─
   'jordan-1-retro-high-og-unc': [
-    'https://sneakernews.com/wp-content/uploads/2025/03/air-jordan-1-unc-reimagined-dz5485-402-release-date-1.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/03/air-jordan-1-unc-reimagined-dz5485-402-release-date-2.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/03/air-jordan-1-unc-reimagined-dz5485-402-release-date-3.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/03/air-jordan-1-unc-reimagined-dz5485-402-release-date-4.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/03/air-jordan-1-unc-reimagined-dz5485-402-release-date-5.jpg',
+    'https://images.stockx.com/360/Air-Jordan-1-Retro-High-OG-UNC-Reimagined/Images/Air-Jordan-1-Retro-High-OG-UNC-Reimagined/Lv2/img01.jpg',
+    'https://images.stockx.com/360/Air-Jordan-1-Retro-High-OG-UNC-Reimagined/Images/Air-Jordan-1-Retro-High-OG-UNC-Reimagined/Lv2/img03.jpg',
+    'https://images.stockx.com/360/Air-Jordan-1-Retro-High-OG-UNC-Reimagined/Images/Air-Jordan-1-Retro-High-OG-UNC-Reimagined/Lv2/img06.jpg',
+    'https://images.stockx.com/360/Air-Jordan-1-Retro-High-OG-UNC-Reimagined/Images/Air-Jordan-1-Retro-High-OG-UNC-Reimagined/Lv2/img12.jpg',
+    'https://images.stockx.com/360/Air-Jordan-1-Retro-High-OG-UNC-Reimagined/Images/Air-Jordan-1-Retro-High-OG-UNC-Reimagined/Lv2/img15.jpg',
   ],
   // ── Air Force 1 Low Retro Lettering ──────────────────────────────────────
   'af1-retro-lettering': [

@@ -8,6 +8,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'sneakernews.com' },
       { protocol: 'https', hostname: 'images.footlocker.com' },
       { protocol: 'https', hostname: 'static.nike.com' },
+      { protocol: 'https', hostname: 'images.stockx.com' },
     ],
   },
 }
