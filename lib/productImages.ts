@@ -4,13 +4,13 @@
  * Used as the primary image source since images are not yet in Shopify.
  */
 export const PRODUCT_IMAGES: Record<string, string[]> = {
-  // ── Jordan 1 Retro High OG (Varsity Red/Black/White FD2596-602) ──────────
+  // ── Jordan 1 Retro High OG Black Toe Reimagined (DZ5485-106, 2023) ────────
   'air-jordan-1-retro-high-og': [
-    'https://sneakernews.com/wp-content/uploads/2025/02/air-jordan-1-wmns-varsity-red-black-white-FD2596-602-1.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/02/air-jordan-1-wmns-varsity-red-black-white-FD2596-602-2.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/02/air-jordan-1-wmns-varsity-red-black-white-FD2596-602-3.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/02/air-jordan-1-wmns-varsity-red-black-white-FD2596-602-4.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/02/air-jordan-1-wmns-varsity-red-black-white-FD2596-602-5.jpg',
+    'https://sneakernews.com/wp-content/uploads/2022/12/black-toe-reimagined-jordan-1s.jpg',
+    'https://sneakernews.com/wp-content/uploads/2022/12/black-toe-reimagined-jordan-1s-1.jpg',
+    'https://sneakernews.com/wp-content/uploads/2022/12/black-toe-reimagined-jordan-1s-2.jpg',
+    'https://sneakernews.com/wp-content/uploads/2022/12/Air-Jordan-1-Black-Toe-Reimagined-2023-02.jpg',
+    'https://sneakernews.com/wp-content/uploads/2022/12/black-toe-reimagined-jordan-1s.jpg',
   ],
   // ── Jordan 5 Reimagined Black Metallic ───────────────────────────────────
   'jordan-5-reimagined-black-metallic': [
