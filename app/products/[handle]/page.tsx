@@ -43,7 +43,7 @@ export default function ProductPage() {
   const overrideUrls = PRODUCT_IMAGES[product.handle] ?? []
 
   // Build a unified image list: prefer Shopify-hosted, fall back to CDN map
-  const allImages: Array<{ url: string; altText: string }> =
+  const allImages: Array<{ url: string; altText: string | null }> =
     shopifyImages.length > 0
       ? shopifyImages
       : overrideUrls.map(url => ({ url, altText: product.title }))
