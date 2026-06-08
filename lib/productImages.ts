@@ -4,13 +4,13 @@
  * Used as the primary image source since images are not yet in Shopify.
  */
 export const PRODUCT_IMAGES: Record<string, string[]> = {
-  // ── Jordan 1 Retro High OG Black Toe (555088-125, clean studio shots) ─────
+  // ── Jordan 1 Retro High OG Black Toe Reimagined (StockX 360 studio) ────────
   'air-jordan-1-retro-high-og': [
-    'https://sneakernews.com/wp-content/uploads/2016/10/air-jordan-1-black-toe-official-photos-01.jpg',
-    'https://sneakernews.com/wp-content/uploads/2016/10/air-jordan-1-black-toe-official-photos-02.jpg',
-    'https://sneakernews.com/wp-content/uploads/2016/10/air-jordan-1-black-toe-official-photos-03.jpg',
-    'https://sneakernews.com/wp-content/uploads/2016/10/air-jordan-1-black-toe-official-photos-04.jpg',
-    'https://sneakernews.com/wp-content/uploads/2016/10/air-jordan-1-black-toe-official-photos-05.jpg',
+    'https://images.stockx.com/360/Air-Jordan-1-Retro-High-OG-Black-Toe-Reimagined/Images/Air-Jordan-1-Retro-High-OG-Black-Toe-Reimagined/Lv2/img01.jpg',
+    'https://images.stockx.com/360/Air-Jordan-1-Retro-High-OG-Black-Toe-Reimagined/Images/Air-Jordan-1-Retro-High-OG-Black-Toe-Reimagined/Lv2/img03.jpg',
+    'https://images.stockx.com/360/Air-Jordan-1-Retro-High-OG-Black-Toe-Reimagined/Images/Air-Jordan-1-Retro-High-OG-Black-Toe-Reimagined/Lv2/img06.jpg',
+    'https://images.stockx.com/360/Air-Jordan-1-Retro-High-OG-Black-Toe-Reimagined/Images/Air-Jordan-1-Retro-High-OG-Black-Toe-Reimagined/Lv2/img09.jpg',
+    'https://images.stockx.com/360/Air-Jordan-1-Retro-High-OG-Black-Toe-Reimagined/Images/Air-Jordan-1-Retro-High-OG-Black-Toe-Reimagined/Lv2/img12.jpg',
   ],
   // ── Jordan 5 Reimagined Black Metallic ───────────────────────────────────
   'jordan-5-reimagined-black-metallic': [
