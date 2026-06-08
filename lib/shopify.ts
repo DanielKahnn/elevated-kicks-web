@@ -127,7 +127,7 @@ export async function getCollection(handle: string): Promise<ShopifyCollection |
       collectionByHandle(handle: $handle) {
         id title handle description
         image { url altText width height }
-        products(first: 24) { edges { node { ...ProductFields } } }
+        products(first: 50) { edges { node { ...ProductFields } } }
       }
     }
   `
