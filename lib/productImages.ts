@@ -4,13 +4,13 @@
  * Used as the primary image source since images are not yet in Shopify.
  */
 export const PRODUCT_IMAGES: Record<string, string[]> = {
-  // ── Jordan 1 Retro High OG (base OG — 2025 Pro Green FD2596-101) ─────────
+  // ── Jordan 1 Retro High OG (Varsity Red/Black/White FD2596-602) ──────────
   'air-jordan-1-retro-high-og': [
-    'https://sneakernews.com/wp-content/uploads/2025/09/air-jordan-1-retro-high-og-pale-ivory-pro-green-fir-coconut-milk-fd2596-101-1.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/09/air-jordan-1-retro-high-og-pale-ivory-pro-green-fir-coconut-milk-fd2596-101-2.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/09/air-jordan-1-retro-high-og-pale-ivory-pro-green-fir-coconut-milk-fd2596-101-3.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/09/air-jordan-1-retro-high-og-pale-ivory-pro-green-fir-coconut-milk-fd2596-101-4.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/09/air-jordan-1-retro-high-og-pale-ivory-pro-green-fir-coconut-milk-fd2596-101-5.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/02/air-jordan-1-wmns-varsity-red-black-white-FD2596-602-1.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/02/air-jordan-1-wmns-varsity-red-black-white-FD2596-602-2.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/02/air-jordan-1-wmns-varsity-red-black-white-FD2596-602-3.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/02/air-jordan-1-wmns-varsity-red-black-white-FD2596-602-4.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/02/air-jordan-1-wmns-varsity-red-black-white-FD2596-602-5.jpg',
   ],
   // ── Jordan 5 Reimagined Black Metallic ───────────────────────────────────
   'jordan-5-reimagined-black-metallic': [
@@ -20,13 +20,13 @@ export const PRODUCT_IMAGES: Record<string, string[]> = {
     'https://cdn.sanity.io/images/pu5wtzfc/production/cda9457f5b9e304b2d26b67f165a3f44b096b455-2000x1250.png',
     'https://cdn.sanity.io/images/pu5wtzfc/production/1d4884fe235f647ab1cf70b2731cb3e30f2e690f-2000x1333.jpg',
   ],
-  // ── Jordan 3 Retro Black Cat ──────────────────────────────────────────────
+  // ── Jordan 3 Retro Black Cat (consistent studio background, Oct 2024) ─────
   'jordan-3-retro-black-cat': [
-    'https://cdn.sanity.io/images/pu5wtzfc/production/9c2254a350039f8313a01360d6160a796c0f2881-1966x1229.jpg',
-    'https://cdn.sanity.io/images/pu5wtzfc/production/567f1129c451ba0ac145692309acc24c3650713e-2160x1440.webp',
-    'https://cdn.sanity.io/images/pu5wtzfc/production/fc6eb6aa5d28291750fde8d40060a5acabcc084e-2160x1440.webp',
-    'https://cdn.sanity.io/images/pu5wtzfc/production/b2d4cd934f2bba3910c7983804a34df43917673a-1728x2160.webp',
-    'https://cdn.sanity.io/images/pu5wtzfc/production/9c2254a350039f8313a01360d6160a796c0f2881-1966x1229.jpg',
+    'https://sneakernews.com/wp-content/uploads/2024/10/air-jordan-3-black-cat-ct8532-001-release-date-1.jpg',
+    'https://sneakernews.com/wp-content/uploads/2024/10/air-jordan-3-black-cat-ct8532-001-release-date-2.jpg',
+    'https://sneakernews.com/wp-content/uploads/2024/10/air-jordan-3-black-cat-ct8532-001-release-date-3.jpg',
+    'https://sneakernews.com/wp-content/uploads/2024/10/air-jordan-3-black-cat-ct8532-001-release-date-4.jpg',
+    'https://sneakernews.com/wp-content/uploads/2024/10/air-jordan-3-black-cat-ct8532-001-release-date-5.jpg',
   ],
   // ── Jordan 3 Lucky Shorts (side view first, sole at end) ─────────────────
   'jordan-3-lucky-shorts': [
@@ -52,10 +52,10 @@ export const PRODUCT_IMAGES: Record<string, string[]> = {
     'https://sneakernews.com/wp-content/uploads/2025/01/travis-scott-shoes-nike-zoom-field-jaxx-light-chocolate-2025-4.jpg',
     'https://sneakernews.com/wp-content/uploads/2025/01/travis-scott-shoes-nike-zoom-field-jaxx-light-chocolate-2025-5.jpg',
   ],
-  // ── Jordan 4 Retro White Cement ───────────────────────────────────────────
+  // ── Jordan 4 Retro White Cement (cover = 2nd image) ──────────────────────
   'jordan-4-retro-white-cement': [
-    'https://cdn.sanity.io/images/pu5wtzfc/production/5058c64ef0d6df792cb9c939e0fdfc81c7e5b348-1818x2000.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/8a95563b0eebd3c449d489ae9a400f6999844e88-2096x1311.jpg',
+    'https://cdn.sanity.io/images/pu5wtzfc/production/5058c64ef0d6df792cb9c939e0fdfc81c7e5b348-1818x2000.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/e72f4ddccec8a9172123a43a46eee450b5ce2ce6-1966x1229.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/aa0551718d02d826535fac97e81e3a9e4665be8d-1966x1229.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/5058c64ef0d6df792cb9c939e0fdfc81c7e5b348-1818x2000.jpg',
@@ -68,19 +68,19 @@ export const PRODUCT_IMAGES: Record<string, string[]> = {
     'https://cdn.sanity.io/images/pu5wtzfc/production/21568cacfd282c126a5cf14b0c3600e47267fa11-1966x1229.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/7386f5f0efcad31c498897ac47a32fc41cfb6c5d-1966x1229.jpg',
   ],
-  // ── Jordan 1 Retro High OG Rare Air (Jordan 1, not Jordan 3) ─────────────
+  // ── Jordan 1 Retro High OG Rare Air (cover = 3rd, 4+5 = Cinnabar 2025) ───
   'jordan-1-retro-high-og-rare-air': [
+    'https://cdn.sanity.io/images/pu5wtzfc/production/683e144e3e8a4ff58e9afc19932624330f00dd1c-1966x1229.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/3df482d0f4bda53cea1c2b5c3534f7f16617f5be-2000x2000.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/4e7b49f28b8dce470baab2002196d787208dc703-1818x2000.jpg',
-    'https://cdn.sanity.io/images/pu5wtzfc/production/683e144e3e8a4ff58e9afc19932624330f00dd1c-1966x1229.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/04/air-jordan-1-rare-air-cinnabar-store-list-1.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/04/air-jordan-1-rare-air-deep-royal-blue-store-list-1.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/03/air-jordan-1-rare-air-cinnabar-db4612-100-1.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/03/air-jordan-1-rare-air-cinnabar-db4612-100-2.jpg',
   ],
-  // ── Nike Kobe 9 Elite Protro Masterpiece ──────────────────────────────────
+  // ── Nike Kobe 9 Elite Protro Masterpiece (cover = 3rd image) ─────────────
   'nike-kobe-9-elite-protro-masterpiece-2025': [
+    'https://cdn.sanity.io/images/pu5wtzfc/production/e00a90b6dc5354efb06b94730f526307da6777c0-2000x2000.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/6bbebad31d4212445eac5f9445414423ae8c87f0-2000x2000.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/d6a24e199bd09a15d086041f553f2dd8533d47a8-2000x2000.jpg',
-    'https://cdn.sanity.io/images/pu5wtzfc/production/e00a90b6dc5354efb06b94730f526307da6777c0-2000x2000.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/8dd506d0009bfd19592f90dae5c449fd14a616b8-2000x2000.png',
     'https://cdn.sanity.io/images/pu5wtzfc/production/096d2770f9d11a178274aa7ab17bab73683b03bb-2000x2000.png',
   ],
@@ -92,13 +92,13 @@ export const PRODUCT_IMAGES: Record<string, string[]> = {
     'https://cdn.sanity.io/images/pu5wtzfc/production/7255e17f15573023fc7a6404c29d48531bd63c45-2000x2000.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/80b832c40581f987109812c15f9f4e3e2be3951f-2000x2000.jpg',
   ],
-  // ── Nike Victory Tour 4 Golf ──────────────────────────────────────────────
+  // ── Nike Victory Tour 4 Golf (side-profile cover) ─────────────────────────
   'nike-victory-tour-4-golf': [
+    'https://sneakernews.com/wp-content/uploads/2025/04/justin-timberlake-nike-golf-victory-tour-4-hm5802-100-11.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/0333663273286341b3c923e1ce601e751fdfa75d-2000x2000.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/48f297689ec4176e301b4d802dc28a99dd16ec7c-2000x2000.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/24e7693454e71a9dc5b3516cd29279707c0983be-2000x2000.jpg',
-    'https://cdn.sanity.io/images/pu5wtzfc/production/9359a80d2cca9506c6fbcf41ee9166a2c5dd5c8a-1966x1229.jpg',
-    'https://cdn.sanity.io/images/pu5wtzfc/production/28ec69fad830a83732488095ef7c70203c11b242-1966x1229.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/04/justin-timberlake-nike-golf-victory-tour-4-hm5802-100-13.jpg',
   ],
   // ── Jordan 11 Legend Blue ─────────────────────────────────────────────────
   'jordan-11-legend-blue': [
@@ -164,12 +164,12 @@ export const PRODUCT_IMAGES: Record<string, string[]> = {
     'https://cdn.sanity.io/images/pu5wtzfc/production/19dc9dfd3ffdde47e8c87977bd1c20296b8487aa-1966x1229.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/eafbf490a7d7a1b223cfbb942920566e7cbf6e9f-1966x1229.jpg',
   ],
-  // ── Jordan 3 Retro Pure Money (CT8532-111, 2025 — sneaker photos first) ───
+  // ── Jordan 3 Retro Pure Money (cover = 4th image) ────────────────────────
   'jordan-3-retro-pure-money': [
+    'https://sneakernews.com/wp-content/uploads/2025/06/air-jordan-3-pure-money-4.jpg',
     'https://sneakernews.com/wp-content/uploads/2025/06/air-jordan-3-pure-money-1.jpg',
     'https://sneakernews.com/wp-content/uploads/2025/06/air-jordan-3-pure-money-2.jpg',
     'https://sneakernews.com/wp-content/uploads/2025/06/air-jordan-3-pure-money-3.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/06/air-jordan-3-pure-money-4.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/30e69f7c61d8a4394a2956eb606625c516ddfe2f-2000x2000.jpg',
   ],
   // ── Jordan 5 Grape ────────────────────────────────────────────────────────
