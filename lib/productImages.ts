@@ -4,13 +4,13 @@
  * Used as the primary image source since images are not yet in Shopify.
  */
 export const PRODUCT_IMAGES: Record<string, string[]> = {
-  // ── Jordan 1 Retro High OG Black Toe Reimagined (DZ5485-106, 2023) ────────
+  // ── Jordan 1 Retro High OG Black Toe (555088-125, clean studio shots) ─────
   'air-jordan-1-retro-high-og': [
-    'https://sneakernews.com/wp-content/uploads/2022/12/black-toe-reimagined-jordan-1s.jpg',
-    'https://sneakernews.com/wp-content/uploads/2022/12/black-toe-reimagined-jordan-1s-1.jpg',
-    'https://sneakernews.com/wp-content/uploads/2022/12/black-toe-reimagined-jordan-1s-2.jpg',
-    'https://sneakernews.com/wp-content/uploads/2022/12/Air-Jordan-1-Black-Toe-Reimagined-2023-02.jpg',
-    'https://sneakernews.com/wp-content/uploads/2022/12/black-toe-reimagined-jordan-1s.jpg',
+    'https://sneakernews.com/wp-content/uploads/2016/10/air-jordan-1-black-toe-official-photos-01.jpg',
+    'https://sneakernews.com/wp-content/uploads/2016/10/air-jordan-1-black-toe-official-photos-02.jpg',
+    'https://sneakernews.com/wp-content/uploads/2016/10/air-jordan-1-black-toe-official-photos-03.jpg',
+    'https://sneakernews.com/wp-content/uploads/2016/10/air-jordan-1-black-toe-official-photos-04.jpg',
+    'https://sneakernews.com/wp-content/uploads/2016/10/air-jordan-1-black-toe-official-photos-05.jpg',
   ],
   // ── Jordan 5 Reimagined Black Metallic ───────────────────────────────────
   'jordan-5-reimagined-black-metallic': [
@@ -116,13 +116,13 @@ export const PRODUCT_IMAGES: Record<string, string[]> = {
     'https://cdn.sanity.io/images/pu5wtzfc/production/ac9cfa4a4eb44508b3aba9807ebed6e1ce3bbdc5-2000x2000.png',
     'https://cdn.sanity.io/images/pu5wtzfc/production/8466c06cb5bbe62476cf5654ee9b2631e4db5573-1818x2000.png',
   ],
-  // ── Jordan 1 Retro High OG 'UNC' Reimagined (DZ5485-402, blue/white/aged) ─
+  // ── Jordan 1 Retro High OG 'UNC' Reimagined (DZ5485-402, clean studio) ────
   'jordan-1-retro-high-og-unc': [
-    'https://sneakernews.com/wp-content/uploads/2025/02/jordan-1-unc-reimagined-dz5485-402-1.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/02/jordan-1-unc-reimagined-dz5485-402-2.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/02/jordan-1-unc-reimagined-dz5485-402-3.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/02/jordan-1-unc-reimagined-dz5485-402-4.jpg',
-    'https://sneakernews.com/wp-content/uploads/2025/02/jordan-1-unc-reimagined-dz5485-402-5.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/03/air-jordan-1-unc-reimagined-dz5485-402-release-date-1.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/03/air-jordan-1-unc-reimagined-dz5485-402-release-date-2.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/03/air-jordan-1-unc-reimagined-dz5485-402-release-date-3.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/03/air-jordan-1-unc-reimagined-dz5485-402-release-date-4.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/03/air-jordan-1-unc-reimagined-dz5485-402-release-date-5.jpg',
   ],
   // ── Air Force 1 Low Retro Lettering ──────────────────────────────────────
   'af1-retro-lettering': [
