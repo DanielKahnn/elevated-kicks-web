@@ -116,13 +116,13 @@ export const PRODUCT_IMAGES: Record<string, string[]> = {
     'https://cdn.sanity.io/images/pu5wtzfc/production/ac9cfa4a4eb44508b3aba9807ebed6e1ce3bbdc5-2000x2000.png',
     'https://cdn.sanity.io/images/pu5wtzfc/production/8466c06cb5bbe62476cf5654ee9b2631e4db5573-1818x2000.png',
   ],
-  // ── Jordan 1 Retro High OG UNC (DZ5485-400, 2023 University Blue) ─────────
+  // ── Jordan 1 Retro High OG 'UNC' Reimagined (DZ5485-402, blue/white/aged) ─
   'jordan-1-retro-high-og-unc': [
-    'https://sneakernews.com/wp-content/uploads/2023/02/jordan-1-unc-dz5485-400-1.jpg',
-    'https://sneakernews.com/wp-content/uploads/2023/02/jordan-1-unc-dz5485-400-2.jpg',
-    'https://sneakernews.com/wp-content/uploads/2023/02/jordan-1-unc-dz5485-400-3.jpg',
-    'https://sneakernews.com/wp-content/uploads/2023/02/jordan-1-unc-dz5485-400-4.jpg',
-    'https://sneakernews.com/wp-content/uploads/2023/02/jordan-1-unc-dz5485-400-5.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/02/jordan-1-unc-reimagined-dz5485-402-1.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/02/jordan-1-unc-reimagined-dz5485-402-2.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/02/jordan-1-unc-reimagined-dz5485-402-3.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/02/jordan-1-unc-reimagined-dz5485-402-4.jpg',
+    'https://sneakernews.com/wp-content/uploads/2025/02/jordan-1-unc-reimagined-dz5485-402-5.jpg',
   ],
   // ── Air Force 1 Low Retro Lettering ──────────────────────────────────────
   'af1-retro-lettering': [
