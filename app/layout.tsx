@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Header from '@/components/Header'
 import OrbLayer from '@/components/OrbLayer'
+import { CartProvider } from '@/context/CartContext'
 
 export const metadata: Metadata = {
   title: { default: 'Elevated Kicks — Houston\'s Premier Sneaker Store', template: '%s | Elevated Kicks' },
@@ -17,12 +18,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <div className="ek-progress-bar" id="ek-progress" aria-hidden="true" />
-        <OrbLayer />
-        <Header />
-        <main style={{ paddingTop: '68px' }}>
-          {children}
-        </main>
+        <CartProvider>
+          <div className="ek-progress-bar" id="ek-progress" aria-hidden="true" />
+          <OrbLayer />
+          <Header />
+          <main style={{ paddingTop: '68px' }}>
+            {children}
+          </main>
         <footer style={{
           borderTop: '1px solid rgba(255,255,255,0.07)',
           background: 'rgba(4,4,6,0.98)',
@@ -40,7 +42,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </p>
           </div>
         </footer>
-        <ProgressScript />
+          <ProgressScript />
+        </CartProvider>
       </body>
     </html>
   )

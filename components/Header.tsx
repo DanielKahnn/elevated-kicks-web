@@ -2,10 +2,12 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import styles from './Header.module.css'
+import { useCart } from '@/context/CartContext'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const { totalItems } = useCart()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -36,10 +38,22 @@ export default function Header() {
               <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
             </svg>
           </Link>
-          <Link href="/cart" className={styles.iconBtn} aria-label="Cart">
+          <Link href="/cart" className={styles.iconBtn} aria-label="Cart" style={{ position: 'relative' }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
             </svg>
+            {totalItems > 0 && (
+              <span style={{
+                position: 'absolute', top: '-6px', right: '-6px',
+                background: 'linear-gradient(135deg,#FF2D1F,#FF7B28)',
+                color: '#fff', fontSize: '0.6rem', fontWeight: 800,
+                width: '16px', height: '16px', borderRadius: '50%',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                lineHeight: 1,
+              }}>
+                {totalItems > 9 ? '9+' : totalItems}
+              </span>
+            )}
           </Link>
           {/* Mobile hamburger */}
           <button className={styles.hamburger} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">

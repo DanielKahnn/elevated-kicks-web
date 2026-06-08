@@ -1,17 +1,18 @@
 'use client'
-// NOTE: Using 'use client' here for interactive variant selection.
-// For production you'd split server/client components.
 
 import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { formatPrice, type ShopifyProduct } from '@/lib/shopify'
+import { useCart } from '@/context/CartContext'
 import styles from './page.module.css'
 
 export default function ProductPage() {
   const params = useParams()
   const handle = params.handle as string
+  const { addToCart } = useCart()
+
   const [product, setProduct] = useState<ShopifyProduct | null>(null)
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0)
   const [selectedImageIdx, setSelectedImageIdx] = useState(0)
@@ -46,7 +47,15 @@ export default function ProductPage() {
   const displayImage = images[selectedImageIdx] ?? product.featuredImage
 
   const handleAddToCart = () => {
-    // Cart functionality — connects to CartProvider (add in next session)
+    if (!selectedVariant?.availableForSale) return
+    addToCart({
+      variantId: selectedVariant.id,
+      productHandle: product.handle,
+      productTitle: product.title,
+      variantTitle: selectedVariant.title,
+      price: selectedVariant.price,
+      image: product.featuredImage,
+    })
     setAddedToCart(true)
     setTimeout(() => setAddedToCart(false), 2000)
   }
@@ -121,8 +130,16 @@ export default function ProductPage() {
               disabled={!selectedVariant?.availableForSale}
               style={{ width: '100%', marginTop: '1.5rem', fontSize: '1rem', padding: '1rem 2rem' }}
             >
-              {!selectedVariant?.availableForSale ? 'Sold Out' : addedToCart ? '✓ Added!' : 'Add to Cart'}
+              {!selectedVariant?.availableForSale ? 'Sold Out' : addedToCart ? '✓ Added to Cart!' : 'Add to Cart'}
             </button>
+
+            {addedToCart && (
+              <div style={{ marginTop: '0.75rem', textAlign: 'center' }}>
+                <Link href="/cart" style={{ color: '#FF7B28', fontSize: '0.85rem', textDecoration: 'underline' }}>
+                  View Cart →
+                </Link>
+              </div>
+            )}
 
             {/* Description */}
             {product.description && (
