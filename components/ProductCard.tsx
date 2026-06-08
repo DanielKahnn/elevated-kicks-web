@@ -3,6 +3,7 @@ import { useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { type ShopifyProduct, formatPrice } from '@/lib/shopify'
+import { PRODUCT_IMAGES } from '@/lib/productImages'
 import styles from './ProductCard.module.css'
 
 export default function ProductCard({ product }: { product: ShopifyProduct }) {
@@ -26,7 +27,12 @@ export default function ProductCard({ product }: { product: ShopifyProduct }) {
   const price = product.priceRange.minVariantPrice
   const compareAt = product.variants.edges[0]?.node?.compareAtPrice
   const onSale = compareAt && parseFloat(compareAt.amount) > parseFloat(price.amount)
-  const image = product.featuredImage
+
+  // Use Shopify image if available; fall back to our curated CDN map
+  const shopifyImage = product.featuredImage
+  const overrideUrls = PRODUCT_IMAGES[product.handle]
+  const imageUrl = shopifyImage?.url ?? overrideUrls?.[0] ?? null
+  const imageAlt = shopifyImage?.altText ?? product.title
 
   return (
     <div
@@ -39,10 +45,10 @@ export default function ProductCard({ product }: { product: ShopifyProduct }) {
       <Link href={`/products/${product.handle}`} className={styles.card}>
         {/* Image */}
         <div className={styles.imageWrap}>
-          {image ? (
+          {imageUrl ? (
             <Image
-              src={image.url}
-              alt={image.altText ?? product.title}
+              src={imageUrl}
+              alt={imageAlt}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
               className={styles.image}

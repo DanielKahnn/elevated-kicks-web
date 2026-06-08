@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { formatPrice, type ShopifyProduct } from '@/lib/shopify'
 import { useCart } from '@/context/CartContext'
+import { PRODUCT_IMAGES } from '@/lib/productImages'
 import styles from './page.module.css'
 
 export default function ProductPage() {
@@ -38,23 +39,32 @@ export default function ProductPage() {
     </div>
   )
 
-  const images = product.images.edges.map(e => e.node)
+  const shopifyImages = product.images.edges.map(e => e.node)
+  const overrideUrls = PRODUCT_IMAGES[product.handle] ?? []
+
+  // Build a unified image list: prefer Shopify-hosted, fall back to CDN map
+  const allImages: Array<{ url: string; altText: string }> =
+    shopifyImages.length > 0
+      ? shopifyImages
+      : overrideUrls.map(url => ({ url, altText: product.title }))
+
   const variants = product.variants.edges.map(e => e.node)
   const selectedVariant = variants[selectedVariantIdx]
   const price = selectedVariant?.price ?? product.priceRange.minVariantPrice
   const compareAt = selectedVariant?.compareAtPrice
   const onSale = compareAt && parseFloat(compareAt.amount) > parseFloat(price.amount)
-  const displayImage = images[selectedImageIdx] ?? product.featuredImage
+  const displayImage = allImages[selectedImageIdx] ?? null
 
   const handleAddToCart = () => {
     if (!selectedVariant?.availableForSale) return
+    const cartImage = product.featuredImage ?? (allImages[0] ? { url: allImages[0].url, altText: allImages[0].altText, width: 800, height: 800 } : null)
     addToCart({
       variantId: selectedVariant.id,
       productHandle: product.handle,
       productTitle: product.title,
       variantTitle: selectedVariant.title,
       price: selectedVariant.price,
-      image: product.featuredImage,
+      image: cartImage,
     })
     setAddedToCart(true)
     setTimeout(() => setAddedToCart(false), 2000)
@@ -84,9 +94,9 @@ export default function ProductPage() {
                 <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.1)', fontFamily: 'Bebas Neue, sans-serif', fontSize: '4rem' }}>EK</div>
               )}
             </div>
-            {images.length > 1 && (
+            {allImages.length > 1 && (
               <div className={styles.thumbs}>
-                {images.map((img, i) => (
+                {allImages.map((img, i) => (
                   <button key={i} className={`${styles.thumb} ${i === selectedImageIdx ? styles.thumbActive : ''}`} onClick={() => setSelectedImageIdx(i)}>
                     <Image src={img.url} alt={img.altText ?? ''} fill style={{ objectFit: 'cover' }} sizes="80px" />
                   </button>
