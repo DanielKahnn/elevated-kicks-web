@@ -196,11 +196,11 @@ export const PRODUCT_IMAGES: Record<string, string[]> = {
     'https://cdn.sanity.io/images/pu5wtzfc/production/ad10c59bccc6233fab2323dd45d1dab72f9eb4c3-1818x2000.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/8486c194fcff5941f1a307c39acc17e5ba074a04-1966x1229.jpg',
   ],
-  // ── Jordan 1 Retro High OG Self Expression ────────────────────────────────
+  // ── Jordan 1 Retro High OG Self Expression (cover = 3rd) ─────────────────
   'jordan-1-retro-high-og-self-expression': [
+    'https://cdn.sanity.io/images/pu5wtzfc/production/0b56f66714a21573dacc5181a2b6f4fe0267de2c-2000x2000.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/521429d632f55d5bacb438732a99f02e2f74f4ed-2000x2000.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/7784045228c5bb4d80a426ecc854fe84a321e215-2000x2000.jpg',
-    'https://cdn.sanity.io/images/pu5wtzfc/production/0b56f66714a21573dacc5181a2b6f4fe0267de2c-2000x2000.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/43afac64c435c9609e7f1f9df50a77a85f750d8f-2000x2000.jpg',
     'https://cdn.sanity.io/images/pu5wtzfc/production/521429d632f55d5bacb438732a99f02e2f74f4ed-2000x2000.jpg',
   ],
