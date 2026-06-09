@@ -49,7 +49,9 @@ export default function ProductPage() {
       : overrideUrls.map(url => ({ url, altText: product.title }))
 
   const variants = product.variants.edges.map(e => e.node)
-  const selectedVariant = variants[selectedVariantIdx]
+  // Filter out Shopify's placeholder "Default Title" — only show real size/option variants
+  const sizeVariants = variants.filter(v => v.title !== 'Default Title')
+  const selectedVariant = variants[selectedVariantIdx] ?? variants[0]
   const price = selectedVariant?.price ?? product.priceRange.minVariantPrice
   const compareAt = selectedVariant?.compareAtPrice
   const onSale = compareAt && parseFloat(compareAt.amount) > parseFloat(price.amount)
@@ -114,21 +116,27 @@ export default function ProductPage() {
               {onSale && <span className={styles.saleBadge}>SALE</span>}
             </div>
 
-            {/* Variants */}
-            {variants.length > 1 && (
+            {/* Size selector */}
+            {sizeVariants.length > 0 && (
               <div className={styles.variantSection}>
-                <p className={styles.variantLabel}>Select: <strong>{selectedVariant?.title}</strong></p>
+                <p className={styles.variantLabel}>
+                  Size: <strong>{selectedVariant?.title}</strong>
+                  {!selectedVariant?.availableForSale && <span style={{ color: '#FF2D1F', fontWeight: 400, marginLeft: '0.5rem' }}>(Sold Out)</span>}
+                </p>
                 <div className={styles.variants}>
-                  {variants.map((v, i) => (
-                    <button
-                      key={v.id}
-                      className={`${styles.variantBtn} ${i === selectedVariantIdx ? styles.variantSelected : ''} ${!v.availableForSale ? styles.variantSoldOut : ''}`}
-                      onClick={() => setSelectedVariantIdx(i)}
-                      disabled={!v.availableForSale}
-                    >
-                      {v.title}
-                    </button>
-                  ))}
+                  {sizeVariants.map((v) => {
+                    const idx = variants.findIndex(vi => vi.id === v.id)
+                    return (
+                      <button
+                        key={v.id}
+                        className={`${styles.variantBtn} ${idx === selectedVariantIdx ? styles.variantSelected : ''} ${!v.availableForSale ? styles.variantSoldOut : ''}`}
+                        onClick={() => setSelectedVariantIdx(idx)}
+                        title={!v.availableForSale ? 'Sold out' : v.title}
+                      >
+                        {v.title}
+                      </button>
+                    )
+                  })}
                 </div>
               </div>
             )}

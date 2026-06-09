@@ -94,7 +94,7 @@ const PRODUCT_FRAGMENT = `
       minVariantPrice { amount currencyCode }
       maxVariantPrice { amount currencyCode }
     }
-    variants(first: 20) {
+    variants(first: 50) {
       edges { node { id title availableForSale
         price { amount currencyCode }
         compareAtPrice { amount currencyCode }
