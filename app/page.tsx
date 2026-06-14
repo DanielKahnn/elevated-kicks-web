@@ -19,7 +19,7 @@ export default async function HomePage() {
       <section className={styles.hero}>
         <div className={styles.heroLeft}>
           <p className={`${styles.heroEyebrow} reveal`}>Houston · Est. 2024</p>
-          <h1 className={`${styles.heroTitle} reveal delay-1`}>
+          <h1 className={`${styles.heroTitle} reveal-clip delay-1`}>
             The Art of<br />
             the <em className={styles.heroItalic}>Sneaker.</em>
           </h1>
@@ -34,25 +34,36 @@ export default async function HomePage() {
 
           {/* Stats row */}
           <div className={`${styles.heroStats} reveal delay-4`}>
-            {[['26+', 'Exclusive Pairs'], ['100%', 'Authenticated'], ['HTX', 'Based & Proud']].map(([n, l]) => (
-              <div key={l} className={styles.heroStat}>
-                <span className={styles.heroStatNum}>{n}</span>
-                <span className={styles.heroStatLabel}>{l}</span>
+            {[
+              { n: '26', suffix: '+', label: 'Exclusive Pairs' },
+              { n: '100', suffix: '%', label: 'Authenticated' },
+              { n: 'HTX', suffix: '', label: 'Based & Proud', raw: true },
+            ].map(({ n, suffix, label, raw }) => (
+              <div key={label} className={styles.heroStat}>
+                <span
+                  className={styles.heroStatNum}
+                  {...(!raw ? { 'data-count': n, 'data-suffix': suffix } : {})}
+                >
+                  {n}{suffix}
+                </span>
+                <span className={styles.heroStatLabel}>{label}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className={`${styles.heroRight} reveal-scale delay-2`}>
+        <div className={`${styles.heroRight} reveal-zoom delay-2`}>
           {heroImageUrl ? (
-            <div className={styles.heroImgWrap}>
+            <div className={`${styles.heroImgWrap} parallax`} data-speed="0.08">
               <Image
                 src={heroImageUrl}
                 alt={heroProduct?.title ?? 'Featured sneaker'}
                 fill
                 priority
+                quality={90}
                 sizes="(max-width: 900px) 100vw, 50vw"
                 style={{ objectFit: 'contain' }}
+                className="float"
               />
               {heroProduct && (
                 <div className={styles.heroImgLabel}>
@@ -93,25 +104,24 @@ export default async function HomePage() {
           <div className="container">
             <div className={`${styles.sectionHeader} reveal`}>
               <p className="section-sub">Fresh Arrivals</p>
-              <h2 className={styles.sectionTitle}>Latest Drops</h2>
+              <h2 className={`${styles.sectionTitle} reveal-clip delay-1`}>Latest Drops</h2>
               <div className="section-divider" />
             </div>
 
             <div className={styles.featuredGrid}>
               {/* Large hero card */}
-              <Link href={`/products/${featuredProducts[0].handle}`} className={`${styles.featuredHero} reveal`}>
+              <Link href={`/products/${featuredProducts[0].handle}`} className={`${styles.featuredHero} reveal-zoom`}>
                 <div className={styles.featuredHeroImg}>
                   {(() => {
                     const img = featuredProducts[0].featuredImage?.url ?? PRODUCT_IMAGES[featuredProducts[0].handle]?.[0]
                     return img ? (
-                      <Image src={img} alt={featuredProducts[0].title} fill style={{ objectFit: 'cover' }} sizes="(max-width: 900px) 100vw, 45vw" />
+                      <Image src={img} alt={featuredProducts[0].title} fill quality={90} sizes="(max-width: 900px) 100vw, 45vw" />
                     ) : <div className={styles.noImg} />
                   })()}
-                  <div className={styles.featuredOverlay} />
                   <div className={styles.featuredHeroInfo}>
                     <p className={styles.featuredTag}>Featured Drop</p>
                     <h3 className={styles.featuredHeroTitle}>{featuredProducts[0].title}</h3>
-                    <p className={styles.featuredPrice} style={{ color: 'var(--gold)', fontFamily: '\'Playfair Display\', Georgia, serif', fontWeight: 600, fontSize: '1.15rem', marginTop: '0.4rem' }}>
+                    <p style={{ color: 'var(--gold)', fontFamily: '\'Playfair Display\', Georgia, serif', fontWeight: 600, fontSize: '1.1rem', marginTop: '0.35rem' }}>
                       From ${parseFloat(featuredProducts[0].priceRange.minVariantPrice.amount).toFixed(0)}
                     </p>
                     <span className={styles.featuredCta}>Shop Now →</span>
@@ -127,9 +137,8 @@ export default async function HomePage() {
                     <Link key={product.id} href={`/products/${product.handle}`} className={`${styles.featuredCard} reveal delay-${i + 1}`}>
                       <div className={styles.featuredCardImg}>
                         {img ? (
-                          <Image src={img} alt={product.title} fill style={{ objectFit: 'cover' }} sizes="30vw" />
+                          <Image src={img} alt={product.title} fill quality={90} sizes="30vw" />
                         ) : <div className={styles.noImg} />}
-                        <div className={styles.featuredOverlay} />
                       </div>
                       <div className={styles.featuredCardInfo}>
                         <h3 className={styles.featuredCardTitle}>{product.title}</h3>
@@ -151,17 +160,17 @@ export default async function HomePage() {
       )}
 
       {/* ── Collections Banner ────────────────────────────────── */}
-      <section className={`${styles.collectionsSection} reveal`}>
+      <section className={styles.collectionsSection}>
         <div className={styles.collectionsInner}>
           {[
             { title: 'Sneakers', sub: 'Jordans, Kobes & More', href: '/collections/sneakers' },
             { title: 'Apparel', sub: 'Fresh Fits for Every Day', href: '/collections/apparel' },
           ].map(({ title, sub, href }, i) => (
-            <Link key={title} href={href} className={styles.collectionPanel}>
+            <Link key={title} href={href} className={`${styles.collectionPanel} reveal-zoom delay-${i + 1}`}>
               <div className={styles.collectionPanelOverlay} />
               <div className={styles.collectionPanelContent}>
                 <p className={styles.collectionPanelSub}>{sub}</p>
-                <h2 className={styles.collectionPanelTitle}>{title}</h2>
+                <h2 className={`${styles.collectionPanelTitle} reveal-clip delay-${i + 2}`}>{title}</h2>
                 <span className={styles.collectionPanelCta}>Explore →</span>
               </div>
             </Link>
@@ -172,15 +181,15 @@ export default async function HomePage() {
       {/* ── Brand Statement ───────────────────────────────────── */}
       <section className={styles.statementSection}>
         <div className="container">
-          <div className={`${styles.statementInner} reveal`}>
-            <div className={styles.statementLine} />
-            <blockquote className={styles.statementQuote}>
+          <div className={styles.statementInner}>
+            <div className={`${styles.statementLine} reveal delay-1`} />
+            <blockquote className={`${styles.statementQuote} reveal-clip delay-2`}>
               "Where Houston Meets The Culture"
             </blockquote>
-            <p className={styles.statementSub}>
+            <p className={`${styles.statementSub} reveal delay-3`}>
               Every pair authenticated. Every drop curated. Every customer respected.
             </p>
-            <div className={styles.statementLine} />
+            <div className={`${styles.statementLine} reveal delay-4`} />
           </div>
         </div>
       </section>

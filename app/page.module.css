@@ -184,49 +184,61 @@
 }
 
 .featuredHero {
-  display: block;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
   cursor: pointer;
+  transition: border-color 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out);
+  overflow: hidden;
 }
+.featuredHero:hover {
+  border-color: var(--gold-border);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* Image area — contain so the whole shoe shows crisp */
 .featuredHeroImg {
   position: relative;
-  aspect-ratio: 3/4;
+  aspect-ratio: 4/3;
   overflow: hidden;
   background: var(--bg-elevated);
+  padding: 1.5rem;
 }
-.featuredHeroImg img { transition: transform 0.8s var(--ease-out); }
-.featuredHero:hover .featuredHeroImg img { transform: scale(1.04); }
+.featuredHeroImg img {
+  object-fit: contain !important;
+  transition: transform 0.8s var(--ease-out);
+}
+.featuredHero:hover .featuredHeroImg img { transform: scale(1.06); }
 
-.featuredOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(10,9,8,0.92) 0%, rgba(10,9,8,0.3) 50%, transparent 100%);
-}
+/* Info sits below image — no overlay needed */
+.featuredOverlay { display: none; }
+
 .featuredHeroInfo {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 2rem 2rem 2.5rem;
+  padding: 1.5rem 1.75rem 1.85rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg-surface);
 }
 .featuredTag {
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
 }
 .featuredHeroTitle {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-size: clamp(1.2rem, 2.2vw, 1.75rem);
   font-weight: 600;
   color: var(--text);
-  line-height: 1.2;
+  line-height: 1.25;
   letter-spacing: -0.01em;
 }
 .featuredCta {
   display: inline-block;
-  margin-top: 1.25rem;
-  font-size: 0.7rem;
+  margin-top: 1rem;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -235,6 +247,7 @@
   padding-bottom: 2px;
   transition: color 0.2s, border-color 0.2s;
 }
+.featuredHero:hover .featuredCta { color: var(--gold-light); border-color: var(--gold-light); }
 .featuredHero:hover .featuredCta { color: var(--gold-light); border-color: var(--gold-light); }
 
 .featuredSide {
@@ -263,9 +276,13 @@
   overflow: hidden;
   background: var(--bg-elevated);
   flex-shrink: 0;
+  padding: 0.5rem;
 }
-.featuredCardImg img { transition: transform 0.6s var(--ease-out); }
-.featuredCard:hover .featuredCardImg img { transform: scale(1.06); }
+.featuredCardImg img {
+  object-fit: contain !important;
+  transition: transform 0.6s var(--ease-out);
+}
+.featuredCard:hover .featuredCardImg img { transform: scale(1.08); }
 .featuredCardInfo {
   display: flex;
   flex-direction: column;
