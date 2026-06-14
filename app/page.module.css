@@ -197,16 +197,16 @@
   box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
 
-/* Image area — contain so the whole shoe shows crisp */
+/* Image area */
 .featuredHeroImg {
   position: relative;
-  aspect-ratio: 4/3;
+  aspect-ratio: 16/10;
   overflow: hidden;
   background: var(--bg-elevated);
-  padding: 1.5rem;
 }
 .featuredHeroImg img {
-  object-fit: contain !important;
+  object-fit: cover;
+  object-position: center 30%;
   transition: transform 0.8s var(--ease-out);
 }
 .featuredHero:hover .featuredHeroImg img { transform: scale(1.06); }
@@ -276,10 +276,10 @@
   overflow: hidden;
   background: var(--bg-elevated);
   flex-shrink: 0;
-  padding: 0.5rem;
 }
 .featuredCardImg img {
-  object-fit: contain !important;
+  object-fit: cover;
+  object-position: center;
   transition: transform 0.6s var(--ease-out);
 }
 .featuredCard:hover .featuredCardImg img { transform: scale(1.08); }
@@ -321,26 +321,34 @@
 .collectionsInner {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  /* gold divider between panels */
+  gap: 1px;
+  background: var(--gold-border);
 }
 .collectionPanel {
   position: relative;
   aspect-ratio: 4/5;
   overflow: hidden;
-  background: var(--bg-surface);
+  background: var(--bg-elevated);
   display: flex;
   align-items: flex-end;
   cursor: pointer;
 }
-.collectionPanel:first-child { background: #141210; }
-.collectionPanel:last-child { background: #0E0D0B; }
+/* Subtle warm tonal gradient so both panels look intentional */
+.collectionPanel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(201,169,110,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
 .collectionPanelOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(201,169,110,0.04) 0%, transparent 60%),
-              linear-gradient(to top, rgba(10,9,8,0.85) 0%, transparent 60%);
+  background: linear-gradient(to top, rgba(10,9,8,0.88) 0%, rgba(10,9,8,0.2) 55%, transparent 100%);
   transition: opacity 0.5s;
 }
-.collectionPanel:hover .collectionPanelOverlay { opacity: 0.7; }
+.collectionPanel:hover .collectionPanelOverlay { opacity: 0.75; }
 .collectionPanelContent {
   position: relative;
   z-index: 1;
