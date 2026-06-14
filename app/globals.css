@@ -286,3 +286,11 @@ input::placeholder, textarea::placeholder { color: var(--text-faint); }
   animation: ticker 30s linear infinite;
 }
 .ticker-track:hover { animation-play-state: paused; }
+
+/* ── Footer links ────────────────────────────────────────────── */
+.footer-link {
+  font-size: 0.88rem;
+  color: var(--text-faint);
+  transition: color 0.2s;
+}
+.footer-link:hover { color: var(--gold); }

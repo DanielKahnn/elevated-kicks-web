@@ -43,11 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <p style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '1.5rem' }}>Shop</p>
                   <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
                     {[['Sneakers', '/collections/sneakers'], ['Apparel', '/collections/apparel'], ['All Collections', '/collections']].map(([label, href]) => (
-                      <a key={href} href={href} style={{ fontSize: '0.88rem', color: 'var(--text-faint)', transition: 'color 0.2s' }}
-                        onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold)')}
-                        onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-faint)')}>
-                        {label}
-                      </a>
+                      <a key={href} href={href} className="footer-link">{label}</a>
                     ))}
                   </nav>
                 </div>
@@ -56,11 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <p style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '1.5rem' }}>Company</p>
                   <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
                     {[['Contact Us', '/contact'], ['My Account', '/account'], ['Search', '/search']].map(([label, href]) => (
-                      <a key={href} href={href} style={{ fontSize: '0.88rem', color: 'var(--text-faint)', transition: 'color 0.2s' }}
-                        onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold)')}
-                        onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-faint)')}>
-                        {label}
-                      </a>
+                      <a key={href} href={href} className="footer-link">{label}</a>
                     ))}
                   </nav>
                 </div>
