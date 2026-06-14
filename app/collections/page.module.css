@@ -1,0 +1,90 @@
+.header {
+  margin-bottom: 4rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  transition: border-color 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+  cursor: pointer;
+}
+.card:hover {
+  border-color: var(--gold-border);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+}
+.card:hover .cardImg {
+  transform: scale(1.04);
+}
+
+.cardImg {
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-out);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,9,8,0.9) 0%, rgba(10,9,8,0.3) 55%, transparent 100%);
+}
+
+.content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.75rem 2rem;
+}
+
+.tag {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  line-height: 1.15;
+}
+
+.description {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  margin-top: 0.4rem;
+  line-height: 1.5;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid var(--gold-border);
+  padding-bottom: 2px;
+}
+
+.empty {
+  text-align: center;
+  padding: 8rem 0;
+  color: var(--text-faint);
+  font-size: 1rem;
+}

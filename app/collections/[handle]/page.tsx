@@ -8,7 +8,7 @@ interface Props { params: { handle: string } }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const col = await getCollection(params.handle)
   if (!col) return { title: 'Collection Not Found' }
-  return { title: col.title, description: col.description }
+  return { title: `${col.title} — Elevated Kicks`, description: col.description }
 }
 
 export default async function CollectionPage({ params }: Props) {
@@ -18,30 +18,55 @@ export default async function CollectionPage({ params }: Props) {
   const products = collection.products.edges.map(e => e.node)
 
   return (
-    <div className="page-enter" style={{ padding: '4rem 0 6rem', position: 'relative', zIndex: 1 }}>
+    <div style={{ padding: '6rem 0 8rem', position: 'relative', zIndex: 1 }}>
       <div className="container">
         {/* Header */}
-        <div style={{ marginBottom: '3rem', paddingBottom: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-          <p className="section-sub" style={{ marginBottom: '0.5rem' }}>Collection</p>
-          <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(3rem, 8vw, 7rem)', letterSpacing: '0.04em', lineHeight: 1, color: '#fff' }}>
+        <div className="reveal" style={{ marginBottom: '3.5rem', paddingBottom: '2rem', borderBottom: '1px solid var(--border)' }}>
+          <p className="section-sub">Collection</p>
+          <h1 style={{
+            fontFamily: '\'Playfair Display\', Georgia, serif',
+            fontSize: 'clamp(2.75rem, 6vw, 5.5rem)',
+            fontWeight: 700,
+            letterSpacing: '-0.02em',
+            lineHeight: 1.05,
+            color: 'var(--text)',
+          }}>
             {collection.title}
           </h1>
           {collection.description && (
-            <p style={{ color: 'rgba(255,255,255,0.6)', marginTop: '1rem', maxWidth: '600px', fontSize: '1rem', lineHeight: 1.7 }}>
+            <p style={{
+              color: 'var(--text-muted)',
+              marginTop: '1.25rem',
+              maxWidth: '560px',
+              fontSize: '1rem',
+              lineHeight: 1.75,
+            }}>
               {collection.description}
             </p>
           )}
+          <p style={{
+            marginTop: '1rem',
+            fontSize: '0.7rem',
+            fontWeight: 600,
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            color: 'var(--text-faint)',
+          }}>
+            {products.length} {products.length === 1 ? 'Item' : 'Items'}
+          </p>
         </div>
 
         {/* Products */}
         {products.length > 0 ? (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1.25rem' }}>
-            {products.map(product => (
-              <ProductCard key={product.id} product={product} />
+            {products.map((product, i) => (
+              <div key={product.id} className={`reveal delay-${(i % 4) + 1}`}>
+                <ProductCard product={product} />
+              </div>
             ))}
           </div>
         ) : (
-          <div style={{ textAlign: 'center', padding: '6rem 0', color: 'rgba(255,255,255,0.4)' }}>
+          <div style={{ textAlign: 'center', padding: '8rem 0', color: 'var(--text-faint)' }}>
             <p style={{ fontSize: '1.1rem' }}>No products in this collection yet.</p>
           </div>
         )}

@@ -28,28 +28,32 @@ export default function ProductPage() {
   }, [handle])
 
   if (loading) return (
-    <div style={{ padding: '8rem 2rem', textAlign: 'center', color: 'rgba(255,255,255,0.4)' }}>
-      <div className="skeleton" style={{ width: '200px', height: '24px', margin: '0 auto' }} />
+    <div style={{ padding: '8rem 2rem', textAlign: 'center' }}>
+      <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', alignItems: 'center' }}>
+        {[0, 1, 2].map(i => (
+          <div key={i} className="skeleton" style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--gold-border)' }} />
+        ))}
+      </div>
     </div>
   )
+
   if (!product) return (
     <div style={{ padding: '8rem 2rem', textAlign: 'center' }}>
-      <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '3rem' }}>Product Not Found</h1>
+      <h1 style={{ fontFamily: '\'Playfair Display\', Georgia, serif', fontSize: '3rem', color: 'var(--text)' }}>
+        Product Not Found
+      </h1>
       <Link href="/" className="btn-secondary" style={{ marginTop: '2rem', display: 'inline-flex' }}>← Back Home</Link>
     </div>
   )
 
   const shopifyImages = product.images.edges.map(e => e.node)
   const overrideUrls = PRODUCT_IMAGES[product.handle] ?? []
-
-  // Build a unified image list: prefer Shopify-hosted, fall back to CDN map
   const allImages: Array<{ url: string; altText: string | null }> =
     shopifyImages.length > 0
       ? shopifyImages
       : overrideUrls.map(url => ({ url, altText: product.title }))
 
   const variants = product.variants.edges.map(e => e.node)
-  // Filter out Shopify's placeholder "Default Title" — only show real size/option variants
   const sizeVariants = variants.filter(v => v.title !== 'Default Title')
   const selectedVariant = variants[selectedVariantIdx] ?? variants[0]
   const price = selectedVariant?.price ?? product.priceRange.minVariantPrice
@@ -73,9 +77,9 @@ export default function ProductPage() {
   }
 
   return (
-    <div className="page-enter" style={{ padding: '4rem 0 6rem', position: 'relative', zIndex: 1 }}>
+    <div style={{ padding: '5rem 0 7rem', position: 'relative', zIndex: 1 }}>
       <div className="container">
-        <Link href="/" style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', marginBottom: '2rem' }}>
+        <Link href="/" className={styles.backLink}>
           ← Back
         </Link>
 
@@ -88,18 +92,23 @@ export default function ProductPage() {
                   src={displayImage.url}
                   alt={displayImage.altText ?? product.title}
                   fill
-                  sizes="(max-width: 768px) 100vw, 55vw"
-                  style={{ objectFit: 'cover' }}
+                  sizes="(max-width: 900px) 100vw, 55vw"
+                  style={{ objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.16,1,0.3,1)' }}
                   priority
                 />
               ) : (
-                <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.1)', fontFamily: 'Bebas Neue, sans-serif', fontSize: '4rem' }}>EK</div>
+                <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: '\'Playfair Display\', Georgia, serif', fontStyle: 'italic', fontSize: '4rem', color: 'var(--text-faint)' }}>EK</div>
               )}
             </div>
             {allImages.length > 1 && (
               <div className={styles.thumbs}>
                 {allImages.map((img, i) => (
-                  <button key={i} className={`${styles.thumb} ${i === selectedImageIdx ? styles.thumbActive : ''}`} onClick={() => setSelectedImageIdx(i)}>
+                  <button
+                    key={i}
+                    className={`${styles.thumb} ${i === selectedImageIdx ? styles.thumbActive : ''}`}
+                    onClick={() => setSelectedImageIdx(i)}
+                    aria-label={`View image ${i + 1}`}
+                  >
                     <Image src={img.url} alt={img.altText ?? ''} fill style={{ objectFit: 'cover' }} sizes="80px" />
                   </button>
                 ))}
@@ -110,6 +119,7 @@ export default function ProductPage() {
           {/* Info */}
           <div className={styles.info}>
             <h1 className={styles.title}>{product.title}</h1>
+
             <div className={styles.priceRow}>
               <span className={onSale ? styles.salePrice : styles.price}>{formatPrice(price)}</span>
               {onSale && compareAt && <span className={styles.comparePrice}>{formatPrice(compareAt)}</span>}
@@ -121,7 +131,9 @@ export default function ProductPage() {
               <div className={styles.variantSection}>
                 <p className={styles.variantLabel}>
                   Size: <strong>{selectedVariant?.title}</strong>
-                  {!selectedVariant?.availableForSale && <span style={{ color: '#FF2D1F', fontWeight: 400, marginLeft: '0.5rem' }}>(Sold Out)</span>}
+                  {!selectedVariant?.availableForSale && (
+                    <span style={{ color: '#e55', fontWeight: 400, marginLeft: '0.5rem' }}>(Sold Out)</span>
+                  )}
                 </p>
                 <div className={styles.variants}>
                   {sizeVariants.map((v) => {
@@ -143,21 +155,37 @@ export default function ProductPage() {
 
             {/* Add to cart */}
             <button
-              className="btn-primary"
+              className={`btn-primary ${styles.addToCartBtn}`}
               onClick={handleAddToCart}
               disabled={!selectedVariant?.availableForSale}
-              style={{ width: '100%', marginTop: '1.5rem', fontSize: '1rem', padding: '1rem 2rem' }}
+              style={{ cursor: !selectedVariant?.availableForSale ? 'not-allowed' : 'pointer', opacity: !selectedVariant?.availableForSale ? 0.5 : 1 }}
             >
-              {!selectedVariant?.availableForSale ? 'Sold Out' : addedToCart ? '✓ Added to Cart!' : 'Add to Cart'}
+              {!selectedVariant?.availableForSale ? 'Sold Out' : addedToCart ? '✓ Added to Cart' : 'Add to Cart →'}
             </button>
 
             {addedToCart && (
-              <div style={{ marginTop: '0.75rem', textAlign: 'center' }}>
-                <Link href="/cart" style={{ color: '#FF7B28', fontSize: '0.85rem', textDecoration: 'underline' }}>
+              <div className={styles.addedMsg}>
+                <Link href="/cart" style={{ color: 'var(--gold)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
                   View Cart →
                 </Link>
               </div>
             )}
+
+            {/* Guarantees */}
+            <div className={styles.guarantees}>
+              {[
+                ['100% Authenticated', 'Every pair verified before it ships'],
+                ['Free Shipping', 'On all orders to the Houston area'],
+                ['Secure Checkout', 'Powered by Shopify'],
+              ].map(([title, sub]) => (
+                <div key={title} className={styles.guarantee}>
+                  <svg className={styles.guaranteeIcon} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <span><strong style={{ color: 'var(--text-muted)', fontWeight: 600 }}>{title}</strong> — {sub}</span>
+                </div>
+              ))}
+            </div>
 
             {/* Description */}
             {product.description && (
