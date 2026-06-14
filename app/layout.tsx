@@ -88,8 +88,11 @@ function RevealScript() {
   var SEL='.reveal,.reveal-left,.reveal-scale,.reveal-clip,.reveal-zoom';
 
   /* ── Scroll reveals ── */
-  if(rm){
+  function showAll(){
     document.querySelectorAll(SEL).forEach(function(e){e.classList.add('in-view');});
+  }
+  if(rm){
+    showAll();
   } else {
     var mo=new IntersectionObserver(function(entries){
       entries.forEach(function(e){
@@ -102,8 +105,13 @@ function RevealScript() {
       });
     }
     document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
+    /* forward navigation (pushState) — animate in normally */
     var op=history.pushState;
     history.pushState=function(){op.apply(this,arguments);setTimeout(init,150);};
+    /* back/forward navigation (popstate) — show immediately, no black flash */
+    window.addEventListener('popstate',function(){setTimeout(showAll,50);});
+    /* bfcache restore (iOS Safari, etc.) */
+    window.addEventListener('pageshow',function(ev){if(ev.persisted)showAll();});
   }
 
   /* ── Parallax layers ── */
