@@ -1,86 +1,121 @@
-.wrapper {
-  transform-style: preserve-3d;
-  border-radius: 16px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
 .card {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  background: rgba(15,15,18,0.85);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: border-color 0.45s cubic-bezier(0.23,1,0.32,1), box-shadow 0.45s cubic-bezier(0.23,1,0.32,1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
   position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
 }
 .card:hover {
-  border-color: rgba(255,45,31,0.35);
-  box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(255,45,31,0.06);
+  border-color: var(--gold-border);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.45);
 }
+
 .imageWrap {
   position: relative;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  background: rgba(255,255,255,0.02);
+  background: var(--bg-elevated);
 }
 .image {
   object-fit: cover;
-  transition: transform 0.7s cubic-bezier(0.23,1,0.32,1);
+  transition: transform 0.7s var(--ease-out);
 }
-.card:hover .image {
-  transform: scale(1.06);
-}
+.card:hover .image { transform: scale(1.05); }
+
 .noImage {
   width: 100%; height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 3rem;
-  color: rgba(255,255,255,0.1);
-  letter-spacing: 0.1em;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.5rem;
+  font-style: italic;
+  color: var(--text-faint);
 }
+
 .saleBadge {
   position: absolute;
-  top: 0.75rem; left: 0.75rem;
-  background: linear-gradient(135deg,#FF2D1F 0%,#FF7B28 100%);
-  color: #fff;
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
+  top: 1rem; left: 1rem;
+  background: var(--gold);
+  color: var(--bg);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   padding: 0.25rem 0.6rem;
-  border-radius: 4px;
 }
+
+.hoverOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,9,8,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+}
+.card:hover .hoverOverlay { opacity: 1; }
+
+.shopNow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold-border);
+  padding: 0.6rem 1.25rem;
+  background: rgba(10,9,8,0.8);
+  transform: translateY(6px);
+  transition: transform 0.4s var(--ease-out);
+}
+.card:hover .shopNow { transform: translateY(0); }
+
 .info {
-  padding: 1.2rem 1.4rem 1.5rem;
-  background: rgba(10,10,12,0.9);
-  flex: 1;
+  padding: 1.1rem 1.25rem 1.4rem;
 }
 .title {
-  font-family: 'Work Sans', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: #fff;
-  margin-bottom: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.45rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  letter-spacing: 0.01em;
 }
 .priceRow {
   display: flex;
   align-items: center;
   gap: 0.6rem;
 }
-.price { color: #fff; font-weight: 700; font-size: 1rem; }
-.salePrice { color: #FF7B28; font-weight: 700; font-size: 1rem; }
+.price {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gold);
+  font-family: 'Playfair Display', Georgia, serif;
+}
+.salePrice {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gold);
+  font-family: 'Playfair Display', Georgia, serif;
+}
 .comparePrice {
-  color: rgba(255,255,255,0.4);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+  color: var(--text-faint);
   text-decoration: line-through;
 }
+
+.goldBar {
+  height: 1px;
+  background: var(--gold-border);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease-out);
+}
+.card:hover .goldBar { transform: scaleX(1); }
