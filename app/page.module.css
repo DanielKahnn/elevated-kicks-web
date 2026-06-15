@@ -432,20 +432,65 @@
 @media (max-width: 1024px) {
   .featuredGrid { grid-template-columns: 1fr; }
   .featuredSide { flex-direction: row; flex-wrap: wrap; }
-  .featuredCard { min-width: 280px; flex: 1; }
+  .featuredCard { min-width: 260px; flex: 1; }
   .productsGrid { grid-template-columns: repeat(3, 1fr); }
 }
+
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; min-height: auto; padding: 4rem 1.5rem 3rem; gap: 3rem; }
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 5rem 1.25rem 3rem;
+    gap: 2.5rem;
+  }
   .heroLeft { padding-right: 0; }
-  .heroRight { height: 340px; }
-  .collectionsInner { grid-template-columns: 1fr; }
-  .collectionPanel { aspect-ratio: 16/7; }
+  .heroRight { height: 300px; }
+  .collectionsInner {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+  .collectionPanel { aspect-ratio: 16/9; }
+  .collectionPanelContent { padding: 2rem; }
+  .collectionPanelTitle { font-size: clamp(2rem, 8vw, 3.5rem); margin-bottom: 1rem; }
   .productsGrid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 640px) {
-  .heroStats { gap: 1.5rem; }
-  .featuredCard { grid-template-columns: 90px 1fr; }
-  .productsGrid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .section { padding: 4rem 0; }
   .statementSection { padding: 5rem 0; }
+}
+
+@media (max-width: 640px) {
+  /* Hero */
+  .hero { padding: 4.5rem 1rem 2.5rem; gap: 2rem; }
+  .heroTitle { font-size: clamp(2.8rem, 12vw, 4rem); }
+  .heroSub { font-size: 0.9rem; }
+  .heroCtas { gap: 0.75rem; }
+  .heroStats { gap: 1.25rem; padding-top: 1.5rem; }
+  .heroStatNum { font-size: 1.3rem; }
+  .heroRight { height: 260px; }
+
+  /* Ticker */
+  .tickerItem { padding: 0 1rem; gap: 1rem; font-size: 0.62rem; }
+
+  /* Section headers */
+  .sectionHeader { margin-bottom: 2rem; }
+  .section { padding: 3rem 0; }
+
+  /* Featured grid — stack everything */
+  .featuredSide { flex-direction: column; }
+  .featuredCard {
+    grid-template-columns: 80px 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .featuredCardTitle { font-size: 0.9rem; }
+
+  /* Collections */
+  .collectionPanel { aspect-ratio: 4/3; }
+  .collectionPanelContent { padding: 1.5rem; }
+
+  /* Statement */
+  .statementSection { padding: 4rem 0; }
+  .statementQuote { font-size: clamp(1.4rem, 6vw, 1.8rem); }
+
+  /* Archive grid */
+  .productsGrid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
 }

@@ -94,11 +94,12 @@ function RevealScript() {
   if(rm){
     showAll();
   } else {
+    var isMobile=window.innerWidth<768;
     var mo=new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if(e.isIntersecting){e.target.classList.add('in-view');mo.unobserve(e.target);}
       });
-    },{threshold:0.07,rootMargin:'0px 0px -40px 0px'});
+    },{threshold:0.04,rootMargin: isMobile ? '0px 0px 0px 0px' : '0px 0px -40px 0px'});
     function init(){
       document.querySelectorAll(SEL).forEach(function(e){
         if(!e.classList.contains('in-view'))mo.observe(e);
