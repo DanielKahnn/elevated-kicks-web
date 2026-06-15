@@ -2,16 +2,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getFeaturedProducts } from '@/lib/shopify'
 import { PRODUCT_IMAGES } from '@/lib/productImages'
-import ProductCard from '@/components/ProductCard'
 import styles from './page.module.css'
 
 export default async function HomePage() {
-  const products = await getFeaturedProducts(8)
+  const products = await getFeaturedProducts(4)
 
   const heroProduct = products[0]
   const heroImageUrl = heroProduct?.featuredImage?.url ?? PRODUCT_IMAGES[heroProduct?.handle]?.[0] ?? null
   const featuredProducts = products.slice(0, 4)
-  const archiveProducts = products.slice(4)
 
   return (
     <div>
@@ -210,25 +208,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── Archive Products ──────────────────────────────────── */}
-      {archiveProducts.length > 0 && (
-        <section className={styles.section}>
-          <div className="container">
-            <div className={`${styles.sectionHeader} reveal`}>
-              <p className="section-sub">More Heat</p>
-              <h2 className={styles.sectionTitle}>From The Archive</h2>
-              <div className="section-divider" />
-            </div>
-            <div className={styles.productsGrid}>
-              {archiveProducts.map((product, i) => (
-                <div key={product.id} className={`reveal delay-${(i % 4) + 1}`}>
-                  <ProductCard product={product} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
     </div>
   )
 }
