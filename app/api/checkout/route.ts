@@ -41,7 +41,12 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Failed to create cart' }, { status: 500 })
     }
 
-    const checkoutUrl = data.cartCreate.cart.checkoutUrl
+    // Shopify returns the checkout URL on the store's *primary* domain
+    // (elevatedkickshou.com), which now points to this Vercel storefront and has
+    // no /cart/c/... route — so it 404s. Force the checkout onto the myshopify.com
+    // domain (Shopify's own servers) so the hosted checkout actually loads.
+    const rawCheckoutUrl: string = data.cartCreate.cart.checkoutUrl
+    const checkoutUrl = rawCheckoutUrl.replace(/^https?:\/\/[^/]+/, `https://${STORE_DOMAIN}`)
     return NextResponse.json({ checkoutUrl })
   } catch {
     return NextResponse.json({ error: 'Checkout failed' }, { status: 500 })
