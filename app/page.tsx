@@ -160,23 +160,39 @@ export default async function HomePage() {
       )}
 
       {/* ── Collections Banner ────────────────────────────────── */}
-      <section className={styles.collectionsSection}>
-        <div className={styles.collectionsInner}>
-          {[
-            { title: 'Sneakers', sub: 'Jordans, Kobes & More', href: '/collections/sneakers' },
-            { title: 'Apparel', sub: 'Fresh Fits for Every Day', href: '/collections/apparel' },
-          ].map(({ title, sub, href }, i) => (
-            <Link key={title} href={href} className={`${styles.collectionPanel} reveal-zoom delay-${i + 1}`}>
-              <div className={styles.collectionPanelOverlay} />
-              <div className={styles.collectionPanelContent}>
-                <p className={styles.collectionPanelSub}>{sub}</p>
-                <h2 className={`${styles.collectionPanelTitle} reveal-clip delay-${i + 2}`}>{title}</h2>
-                <span className={styles.collectionPanelCta}>Explore →</span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+      {(() => {
+        const sneakerImg = products[0]?.featuredImage?.url ?? PRODUCT_IMAGES[products[0]?.handle]?.[0] ?? null
+        const apparelImg = products[2]?.featuredImage?.url ?? PRODUCT_IMAGES[products[2]?.handle]?.[0] ?? null
+        const panels = [
+          { title: 'Sneakers', sub: 'Jordans, Kobes & More', href: '/collections/sneakers', img: sneakerImg },
+          { title: 'Apparel', sub: 'Fresh Fits for Every Day', href: '/collections/apparel', img: apparelImg },
+        ]
+        return (
+          <section className={styles.collectionsSection}>
+            <div className={styles.collectionsInner}>
+              {panels.map(({ title, sub, href, img }, i) => (
+                <Link key={title} href={href} className={`${styles.collectionPanel} reveal-zoom delay-${i + 1}`}>
+                  {img && (
+                    <Image
+                      src={img}
+                      alt={title}
+                      fill
+                      sizes="(max-width: 900px) 100vw, 50vw"
+                      style={{ objectFit: 'cover', objectPosition: 'center' }}
+                    />
+                  )}
+                  <div className={styles.collectionPanelOverlay} />
+                  <div className={styles.collectionPanelContent}>
+                    <p className={styles.collectionPanelSub}>{sub}</p>
+                    <h2 className={styles.collectionPanelTitle}>{title}</h2>
+                    <span className={styles.collectionPanelCta}>Explore →</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )
+      })()}
 
       {/* ── Brand Statement ───────────────────────────────────── */}
       <section className={styles.statementSection}>
