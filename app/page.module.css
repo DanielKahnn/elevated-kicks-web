@@ -329,9 +329,10 @@
 }
 .collectionPanel {
   position: relative;
-  /* landscape ratio + height cap so full-bleed panels don't get giant on wide screens */
+  /* landscape ratio so full-bleed half-viewport panels aren't absurdly tall.
+     NOTE: do NOT add max-height here — combined with aspect-ratio it stops the
+     panel from filling its grid column and leaves gaps on the sides. */
   aspect-ratio: 3/2;
-  max-height: 600px;
   overflow: hidden;
   background: var(--bg-elevated);
   display: flex;
