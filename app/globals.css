@@ -41,7 +41,12 @@
 /* ── Reset ─────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden; /* must be on html for mobile Safari */
+  max-width: 100%;
+}
 
 body {
   background-color: var(--bg);
@@ -50,6 +55,7 @@ body {
   font-size: 1rem;
   line-height: 1.65;
   overflow-x: hidden;
+  max-width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -153,11 +159,13 @@ p { color: var(--text-muted); line-height: 1.7; }
 /* ── Layout ─────────────────────────────────────────────────── */
 .container {
   max-width: 1340px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 2.5rem;
+  overflow-x: clip;
 }
 @media (max-width: 768px) {
-  .container { padding: 0 1.25rem; }
+  .container { padding: 0 1rem; }
 }
 
 main { position: relative; z-index: 1; }

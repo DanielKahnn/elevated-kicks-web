@@ -6,9 +6,11 @@
   align-items: center;
   padding: 6rem 2.5rem 4rem;
   max-width: 1340px;
+  width: 100%;
   margin: 0 auto;
   gap: 4rem;
   position: relative;
+  overflow: hidden;
 }
 
 .heroLeft {
@@ -432,7 +434,7 @@
 @media (max-width: 1024px) {
   .featuredGrid { grid-template-columns: 1fr; }
   .featuredSide { flex-direction: row; flex-wrap: wrap; }
-  .featuredCard { min-width: 260px; flex: 1; }
+  .featuredCard { min-width: 0; flex: 1 1 260px; max-width: 100%; }
   .productsGrid { grid-template-columns: repeat(3, 1fr); }
 }
 
