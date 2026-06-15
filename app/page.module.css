@@ -454,9 +454,10 @@
   .collectionPanel { aspect-ratio: 16/7; }
   .collectionPanelContent { padding: 1.75rem; }
   .collectionPanelTitle { font-size: clamp(2rem, 8vw, 3.5rem); margin-bottom: 1rem; }
-  .productsGrid { grid-template-columns: repeat(2, 1fr); }
   .section { padding: 4rem 0; }
   .statementSection { padding: 5rem 0; }
+  /* side cards switch to column — reset flex-basis so it doesn't become height */
+  .featuredCard { flex: none; }
 }
 
 @media (max-width: 640px) {
@@ -479,6 +480,7 @@
   /* Featured grid — stack everything */
   .featuredSide { flex-direction: column; }
   .featuredCard {
+    flex: none; /* reset so flex-basis doesn't become height in column layout */
     grid-template-columns: 80px 1fr;
     gap: 1rem;
     padding: 1rem;
