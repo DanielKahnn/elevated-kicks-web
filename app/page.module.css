@@ -329,7 +329,9 @@
 }
 .collectionPanel {
   position: relative;
-  aspect-ratio: 4/5;
+  /* landscape ratio + height cap so full-bleed panels don't get giant on wide screens */
+  aspect-ratio: 3/2;
+  max-height: 600px;
   overflow: hidden;
   background: var(--bg-elevated);
   display: flex;
